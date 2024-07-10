@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence name="OrderSequence" trace="disable" xmlns="http://ws.apache.org/ns/synapse">
+    <log level="full"/>
+    <!--
+        <property name="partner_id" expression="get-property('transport', 'partner_id')" scope="default" type="STRING"/>
+    -->
+    <payloadFactory media-type="json">
+        <format>{"partner_id": "$1"}</format>
+        <args>
+            <arg evaluator="json" expression="$.partner_id"/>
+        </args>
+    </payloadFactory>
+    <property expression="json-eval($.partner_id)" name="partner_id" scope="default" type="STRING"/>
+    <!-- Log the value of the 'partner_id' header -->
+    <log level="full">
+        <property expression="get-property('partner_id')" name="partner_id"/>
+    </log>
+    <switch source="get-property('partner_id')">
+        <case regex="A">
+            <call>
+                <endpoint key="PartnerA_OrderService"/>
+            </call>
+            <respond/>
+        </case>
+        <case regex="B">
+            <call>
+                <endpoint key="PartnerB_OrderService"/>
+            </call>
+            <respond/>
+        </case>
+        <default>
+            <log level="full">
+                <property name="error" value="Unknown partner_id"/>
+            </log>
+            <payloadFactory media-type="json">
+                <format>{"error": "Invalid partner_id provided"}</format>
+                <args/>
+            </payloadFactory>
+            <!-- Handle unknown partner_id -->
+            <respond/>
+        </default>
+    </switch>
+    <log level="custom">
+        <property name="message" value="Order creation notification sent"/>
+    </log>
+    <call>
+        <endpoint key="NotificationService"/>
+    </call>
+</sequence>

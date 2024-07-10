@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<api context="/demo" name="OrderIntergrationAPI" xmlns="http://ws.apache.org/ns/synapse">
+    <resource methods="POST" uri-template="/orders">
+        <inSequence>
+            <log level="custom">
+                <property name="message" value="incoming order request"/>
+            </log>
+            <sequence description="main_order_seq" key="OrderSequence"/>
+        </inSequence>
+        <outSequence/>
+        <faultSequence/>
+    </resource>
+</api>

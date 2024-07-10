@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?><artifacts>
+    <artifact name="NotificationService" groupId="com.example.endpoint" version="1.0.0" type="synapse/endpoint" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/endpoints/NotificationService.xml</file>
+    </artifact>
+    <artifact name="PartnerA_OrderService" groupId="com.example.endpoint" version="1.0.0" type="synapse/endpoint" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/endpoints/PartnerA_OrderService.xml</file>
+    </artifact>
+    <artifact name="PartnerB_OrderService" groupId="com.example.endpoint" version="1.0.0" type="synapse/endpoint" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/endpoints/PartnerB_OrderService.xml</file>
+    </artifact>
+    <artifact name="OrderSequence" groupId="com.example.sequence" version="1.0.0" type="synapse/sequence" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/sequences/OrderSequence.xml</file>
+    </artifact>
+    <artifact name="OrderIntegrationAPI" groupId="com.example.api" version="1.0.0" type="synapse/api" serverRole="EnterpriseServiceBus">
+        <file>src/main/synapse-config/api/OrderIntegrationAPI.xml</file>
+    </artifact>
+    <artifact name="OrderIntegrationAPI_swagger" groupId="com.example.metadata" version="1.0.0" type="synapse/metadata" serverRole="EnterpriseServiceBus">
+        <file>src/main/resources/metadata/OrderIntegrationAPI_swagger.yaml</file>
+    </artifact>
+    <artifact name="OrderIntegrationAPI_metadata" groupId="com.example.metadata" version="1.0.0" type="synapse/metadata" serverRole="EnterpriseServiceBus">
+        <file>src/main/resources/metadata/OrderIntegrationAPI_metadata.yaml</file>
+    </artifact>
+</artifacts>
